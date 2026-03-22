@@ -5,7 +5,7 @@ import {
   nextPhoto, openLightbox, prevPhoto, setActiveSection, toggleMenu,
 } from '@app/core/store/app.actions';
 
-// ─── Nav ──────────────────────────────────────────────────────────────────────
+// Nav
 const navInitial: NavState = { activeSection: 'hero', menuOpen: false };
 
 export const navReducer = createReducer(
@@ -15,7 +15,7 @@ export const navReducer = createReducer(
   on(closeMenu,  state => ({ ...state, menuOpen: false }))
 );
 
-// ─── Gallery ──────────────────────────────────────────────────────────────────
+// Gallery
 const galleryInitial: GalleryState = {
   photos: [],
   selectedPhotoId: null,
