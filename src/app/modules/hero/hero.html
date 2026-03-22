@@ -1,0 +1,36 @@
+<section id="hero" class="hero">
+  <div class="hero__bg">
+    <div class="hero__overlay"></div>
+    <div class="hero__particles">
+      @for (p of [1,2,3,4,5,6]; track p) {
+        <span class="particle" [style.animation-delay]="(p * 0.8) + 's'"></span>
+      }
+    </div>
+  </div>
+
+  <div class="hero__content container">
+    <p class="hero__eyebrow">Happy Birthday</p>
+    <h1 class="hero__title">
+      <p class="hero__first_name">Maria</p>
+      Carolina
+    </h1>
+    <p class="hero__subtitle">
+      If it makes you happy, <br>I'll do it.
+    </p>
+
+    <div class="hero__heart">
+      <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 85 L10 40 C0 25 10 5 25 5 C35 5 45 12 50 20 C55 12 65 5 75 5 C90 5 100 25 90 40 Z"/>
+      </svg>
+    </div>
+
+    <button class="hero__cta" (click)="scrollDown()">
+      See more
+      <span class="cta-arrow">↓</span>
+    </button>
+  </div>
+
+  <button class="hero__scroll-hint" (click)="scrollDown()">
+    <span></span>
+  </button>
+</section>

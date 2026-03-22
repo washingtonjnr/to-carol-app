@@ -1,0 +1,121 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: $transition-slow;
+
+  &.scrolled {
+    background: rgba($midnight, 0.92);
+    backdrop-filter: blur(16px);
+    padding: 12px 0;
+    border-bottom: 1px solid rgba($rose-gold, 0.12);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+
+    .brand-script {
+      font-family: $font-script;
+      font-size: 1.5rem;
+      color: $rose-gold;
+    }
+    
+    .brand-script-white {
+      font-size: 1rem;
+      color: $text-muted;
+      font-family: $font-script;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+
+    @include respond(md) {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: $deep-navy;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-left: 1px solid rgba($rose-gold, 0.15);
+
+      &.open { right: 0; }
+    }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+
+    @include respond(md) { display: flex; }
+
+    span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: $rose-gold;
+      border-radius: 2px;
+      transition: $transition-base;
+      transform-origin: center;
+    }
+
+    &.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    &.open span:nth-child(2) { opacity: 0; }
+    &.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+}
+
+.nav-link {
+  font-family: $font-sans;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $text-muted;
+  cursor: pointer;
+  transition: $transition-base;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: $rose-gold;
+    transition: width 0.3s ease;
+  }
+
+  &:hover, &.active {
+    color: $rose-light;
+    &::after { width: 100%; }
+  }
+}

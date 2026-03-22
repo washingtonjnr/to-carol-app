@@ -1,0 +1,73 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+@use 'styles/animations';
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: $font-sans;
+  background-color: $midnight;
+  color: $off-white;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul { list-style: none; }
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: rgba($rose-gold, 0.35);
+  color: $white;
+}
+
+// Scrollbar
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: $midnight; }
+::-webkit-scrollbar-thumb  { background: $rose-gold; border-radius: 3px; }
+
+// Aux
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @include respond(md) { padding: 0 16px; }
+}
+
+.section-label {
+  font-family: $font-script;
+  font-size: 1.1rem;
+  color: $rose-gold;
+  display: block;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: $gradient-rose;
+  border-radius: 2px;
+  margin: 20px auto 0;
+}

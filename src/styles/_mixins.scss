@@ -1,0 +1,52 @@
+@use 'variables' as *;
+
+@mixin respond($bp) {
+  @if $bp == sm { @media (max-width: $bp-sm) { @content; } }
+  @if $bp == md { @media (max-width: $bp-md) { @content; } }
+  @if $bp == lg { @media (max-width: $bp-lg) { @content; } }
+}
+
+@mixin section-base {
+  padding: $section-pad 0;
+  @include respond(md) { padding: $section-pad-mobile 0; }
+}
+
+@mixin section-title {
+  font-family: $font-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: $off-white;
+}
+
+@mixin rose-accent {
+  color: $rose-gold;
+  font-family: $font-script;
+}
+
+@mixin card {
+  background: rgba($navy, 0.6);
+  border: 1px solid rgba($rose-gold, 0.15);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow: $shadow-card;
+  transition: $transition-slow;
+
+  &:hover {
+    border-color: rgba($rose-gold, 0.4);
+    box-shadow: $shadow-glow;
+    transform: translateY(-4px);
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin fade-in-up($delay: 0s) {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards $delay;
+}

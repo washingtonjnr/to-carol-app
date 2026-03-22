@@ -1,0 +1,28 @@
+<section id="timeline" class="timeline">
+  <div class="container">
+
+    <div class="timeline__header">
+      <span class="section-label">Milestones</span>
+      <h2 class="timeline__title">Our Timeline</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="timeline__track">
+      <div class="timeline__line"></div>
+
+      @for (event of events; track event.title; let i = $index) {
+        <div class="timeline__item" [class.timeline__item--right]="i % 2 !== 0">
+          <div class="timeline__dot">
+            <span>{{ event.icon }}</span>
+          </div>
+          <div class="timeline__card">
+            <span class="timeline__date">{{ event.date }}</span>
+            <h3 class="timeline__event-title">{{ event.title }}</h3>
+            <p class="timeline__desc">{{ event.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

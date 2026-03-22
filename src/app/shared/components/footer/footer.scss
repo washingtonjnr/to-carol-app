@@ -1,0 +1,38 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.footer {
+  background: $deep-navy;
+  border-top: 1px solid rgba($rose-gold, 0.12);
+  padding: 48px 0;
+
+  &__inner {
+    @include flex-center;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  &__heart {
+    width: 28px;
+    height: 28px;
+    animation: heartbeat 2.4s ease-in-out infinite;
+
+    svg path {
+      fill: $rose-gold;
+      opacity: 0.8;
+    }
+  }
+
+  &__tagline {
+    font-family: $font-script;
+    font-size: 1.4rem;
+    color: $rose-light;
+  }
+
+  &__copy {
+    font-size: 0.8rem;
+    color: $text-muted;
+    letter-spacing: 0.06em;
+  }
+}

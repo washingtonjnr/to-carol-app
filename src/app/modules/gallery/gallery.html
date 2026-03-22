@@ -1,0 +1,53 @@
+<section id="gallery" class="gallery">
+  <div class="container">
+
+    <div class="gallery__header">
+      <span class="section-label">Memories</span>
+      <h2 class="gallery__title">Our Gallery</h2>
+      <div class="divider"></div>
+    </div>
+
+    @if (loading$ | async) {
+      <div class="gallery__status">
+        <div class="gallery__spinner"></div>
+        <p>Loading memories...</p>
+      </div>
+    } @else if (error$ | async; as error) {
+      <div class="gallery__status gallery__status--error">
+        <p>{{ error }}</p>
+      </div>
+    } @else {
+      <div class="gallery__grid">
+        @for (photo of photos$ | async; track photo.id) {
+          <div class="gallery__item" role="button" tabindex="0"
+               (click)="open(photo.id)" (keyup.enter)="open(photo.id)">
+            <img [src]="photo.src" [alt]="photo.alt" loading="lazy" />
+            <div class="gallery__caption">
+              <p>{{ photo.caption }}</p>
+              <span class="caption-icon">⤢</span>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+@if (lightboxOpen$ | async) {
+  <div class="lightbox" role="button" tabindex="0"
+       (click)="close()" (keyup.escape)="close()">
+    <button class="lightbox__close" (click)="close()">✕</button>
+    <button class="lightbox__nav lightbox__nav--prev" (click)="prev(); $event.stopPropagation()">‹</button>
+    <button class="lightbox__nav lightbox__nav--next" (click)="next(); $event.stopPropagation()">›</button>
+
+    @if (selected$ | async; as photo) {
+      <div class="lightbox__inner" role="button" tabindex="0"
+           (click)="$event.stopPropagation()" (keyup.enter)="$event.stopPropagation()">
+        <img [src]="photo.src" [alt]="photo.alt" />
+        <p class="lightbox__caption">{{ photo.caption }}</p>
+      </div>
+    }
+  </div>
+}

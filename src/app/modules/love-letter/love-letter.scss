@@ -1,0 +1,85 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.love-letter {
+  @include section-base;
+  background: $midnight;
+  position: relative;
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba($rose-gold, 0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 50%, rgba(#6b4c8a, 0.09) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 64px;
+    position: relative;
+  }
+
+  &__title { @include section-title; }
+}
+
+.letter-card {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  background: linear-gradient(145deg, rgba($deep-navy, 0.9), rgba($navy, 0.6));
+  border: 1px solid rgba($rose-gold, 0.2);
+  border-radius: 20px;
+  padding: 56px 64px;
+  box-shadow: $shadow-card, $shadow-glow;
+  backdrop-filter: blur(8px);
+
+  @include respond(md) { padding: 40px 32px; }
+  @include respond(sm) { padding: 32px 20px; }
+
+  p {
+    font-family: $font-sans;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: rgba($off-white, 0.82);
+    margin-bottom: 20px;
+  }
+
+  &__ornament {
+    font-size: 1.2rem;
+    color: rgba($rose-gold, 0.5);
+    text-align: center;
+    display: block;
+    margin-bottom: 32px;
+    letter-spacing: 8px;
+
+    &--bottom {
+      margin-top: 32px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.letter-salutation {
+  font-family: $font-script !important;
+  font-size: 1.8rem !important;
+  color: $rose-light !important;
+  margin-bottom: 28px !important;
+}
+
+.letter-closing {
+  margin-top: 32px !important;
+  font-size: 1rem !important;
+  color: rgba($off-white, 0.7) !important;
+  line-height: 1.6 !important;
+}
+
+.closing-script {
+  font-family: $font-script;
+  font-size: 1.7rem;
+  color: $rose-gold;
+  display: block;
+  margin-top: 8px;
+}

@@ -1,0 +1,116 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.timeline {
+  @include section-base;
+  background: $midnight;
+  position: relative;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  &__title { @include section-title; }
+
+  &__track {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba($rose-gold, 0.4) 10%, rgba($rose-gold, 0.4) 90%, transparent);
+    transform: translateX(-50%);
+
+    @include respond(md) {
+      left: 20px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: calc(50% + 40px);
+    margin-bottom: 60px;
+    position: relative;
+
+    @include respond(md) {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: 56px;
+    }
+
+    &--right {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: calc(50% + 40px);
+
+      @include respond(md) {
+        padding-left: 56px;
+      }
+
+      .timeline__dot {
+        left: auto;
+        right: calc(50% - 20px);
+
+        @include respond(md) {
+          left: 0;
+          right: auto;
+        }
+      }
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    left: calc(50% - 20px);
+    top: 16px;
+    width: 40px;
+    height: 40px;
+    background: $deep-navy;
+    border: 2px solid $rose-gold;
+    border-radius: 50%;
+    @include flex-center;
+    font-size: 1rem;
+    z-index: 2;
+    animation: pulse-glow 3s ease-in-out infinite;
+
+    @include respond(md) {
+      left: 0;
+    }
+  }
+
+  &__card {
+    @include card;
+    padding: 24px 28px;
+    max-width: 380px;
+    width: 100%;
+  }
+
+  &__date {
+    font-family: $font-script;
+    font-size: 0.95rem;
+    color: $rose-gold;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  &__event-title {
+    font-family: $font-serif;
+    font-size: 1.35rem;
+    color: $off-white;
+    margin-bottom: 10px;
+  }
+
+  &__desc {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba($off-white, 0.65);
+  }
+}

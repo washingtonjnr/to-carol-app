@@ -1,0 +1,192 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.gallery {
+  @include section-base;
+  background: $deep-navy;
+
+  &__status {
+    @include flex-center;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 200px;
+    color: $text-muted;
+    font-size: 0.95rem;
+
+    &--error { color: $rose-light; }
+  }
+
+  &__spinner {
+    width: 36px;
+    height: 36px;
+    border: 2px solid rgba($rose-gold, 0.2);
+    border-top-color: $rose-gold;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  &__title { @include section-title; }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    @include respond(md) { grid-template-columns: repeat(2, 1fr); }
+    @include respond(sm) { grid-template-columns: 1fr; }
+
+    // Featured first photo
+    > :first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+
+      @include respond(sm) { grid-column: span 1; grid-row: span 1; }
+    }
+  }
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    aspect-ratio: 4/3;
+    cursor: pointer;
+    background: rgba($navy, 0.8);
+    border: 1px solid rgba($rose-gold, 0.1);
+
+    &:first-child { aspect-ratio: unset; }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &:hover {
+      img { transform: scale(1.06); }
+
+      .gallery__caption { opacity: 1; }
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba($midnight, 0.85) 0%, transparent 60%);
+    opacity: 0;
+    transition: $transition-slow;
+    @include flex-center;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+
+    p {
+      font-family: $font-script;
+      font-size: 1.1rem;
+      color: $off-white;
+      text-align: center;
+    }
+
+    .caption-icon {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: 1.2rem;
+      color: rgba($rose-gold, 0.7);
+    }
+  }
+}
+
+// ─── Lightbox ─────────────────────────────────────────────────────────────────
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba($midnight, 0.95);
+  backdrop-filter: blur(16px);
+  @include flex-center;
+  animation: fadeIn 0.25s ease;
+
+  &__inner {
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &__caption {
+    font-family: $font-script;
+    font-size: 1.2rem;
+    color: $rose-light;
+    text-align: center;
+  }
+
+  &__close {
+    position: fixed;
+    top: 24px;
+    right: 28px;
+    background: rgba($navy, 0.8);
+    border: 1px solid rgba($rose-gold, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: $off-white;
+    font-size: 1rem;
+    cursor: pointer;
+    @include flex-center;
+    transition: $transition-base;
+
+    &:hover {
+      background: rgba($rose-gold, 0.2);
+      border-color: $rose-gold;
+    }
+  }
+
+  &__nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba($navy, 0.7);
+    border: 1px solid rgba($rose-gold, 0.25);
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    color: $off-white;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    @include flex-center;
+    transition: $transition-base;
+
+    &:hover {
+      background: rgba($rose-gold, 0.2);
+      border-color: $rose-gold;
+    }
+
+    &--prev { left: 20px; }
+    &--next { right: 20px; }
+
+    @include respond(sm) {
+      width: 40px;
+      height: 40px;
+      font-size: 1.4rem;
+      &--prev { left: 8px; }
+      &--next { right: 8px; }
+    }
+  }
+}

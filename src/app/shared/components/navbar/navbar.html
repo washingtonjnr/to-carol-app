@@ -1,0 +1,33 @@
+<nav class="navbar" [class.scrolled]="scrolled" [class.menu-open]="menuOpen$ | async">
+  <div class="container navbar__inner">
+
+    <a class="navbar__brand" role="button" tabindex="0"
+       (click)="scrollTo('hero')" (keyup.enter)="scrollTo('hero')">
+      <span class="brand-script-white">To</span>
+      <span class="brand-script">Carol</span>
+    </a>
+
+    <ul class="navbar__links" [class.open]="menuOpen$ | async">
+      @for (link of links; track link.id) {
+        <li>
+          <a
+            class="nav-link"
+            role="button"
+            tabindex="0"
+            [class.active]="(activeSection$ | async) === link.id"
+            (click)="scrollTo(link.id)"
+            (keyup.enter)="scrollTo(link.id)">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <button class="navbar__burger" (click)="toggle()" [class.open]="menuOpen$ | async" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</nav>

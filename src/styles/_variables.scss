@@ -1,0 +1,39 @@
+// Color Palette
+$midnight:    #0d0f1a;
+$deep-navy:   #121628;
+$navy:        #1a1f3c;
+$rose-gold:   #c9956c;
+$rose-light:  #e8b49a;
+$blush:       #f2d0c4;
+$blush-light: #fae8e0;
+$white:       #ffffff;
+$off-white:   #f8f4f0;
+$text-muted:  #8a8fa8;
+
+// Typography
+$font-serif:  'Playfair Display', Georgia, serif;
+$font-sans:   'Inter', system-ui, sans-serif;
+$font-script: 'Dancing Script', cursive;
+
+// Spacing
+$section-pad: 100px;
+$section-pad-mobile: 60px;
+
+// Breakpoints
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+// Gradients
+$gradient-dark:  linear-gradient(135deg, $midnight 0%, $navy 100%);
+$gradient-rose:  linear-gradient(135deg, $rose-gold 0%, $blush 100%);
+$gradient-hero:  linear-gradient(to bottom, rgba($midnight, 0.0) 0%, rgba($midnight, 0.7) 100%);
+
+// Transitions
+$transition-base:   all 0.3s ease;
+$transition-slow:   all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Shadows
+$shadow-card:   0 8px 32px rgba(0, 0, 0, 0.3);
+$shadow-glow:   0 0 40px rgba($rose-gold, 0.2);
