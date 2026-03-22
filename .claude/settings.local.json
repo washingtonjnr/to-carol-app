@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ng new:*)"
+      "Bash(ng new:*)",
+      "Bash(rm \"C:/Users/win-11/Documents/projects/to-carol/src/test-setup.ts\")",
+      "Bash(npm test:*)"
     ]
   }
 }
