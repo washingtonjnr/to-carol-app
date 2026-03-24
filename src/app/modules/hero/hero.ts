@@ -12,10 +12,10 @@ export class HeroComponent {
   private store = inject(Store);
 
   scrollDown() {
-    const el = document.getElementById('our-story');
+    const el = document.getElementById('your-story');
 
     el?.scrollIntoView({ behavior: 'smooth', inline: 'center' });
     
-    this.store.dispatch(setActiveSection({ section: 'our-story' }));
+    this.store.dispatch(setActiveSection({ section: 'your-story' }));
   }
 }

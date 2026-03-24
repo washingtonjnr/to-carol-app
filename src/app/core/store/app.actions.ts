@@ -10,7 +10,7 @@ export const toggleMenu = createAction('[Nav] Toggle Menu');
 export const closeMenu  = createAction('[Nav] Close Menu');
 
 // Gallery – lightbox
-export const openLightbox  = createAction('[Gallery] Open Lightbox',  props<{ photoId: number }>());
+export const openLightbox  = createAction('[Gallery] Open Lightbox',  props<{ photoName: string }>());
 export const closeLightbox = createAction('[Gallery] Close Lightbox');
 export const nextPhoto     = createAction('[Gallery] Next Photo');
 export const prevPhoto     = createAction('[Gallery] Prev Photo');

@@ -16,13 +16,13 @@ export class NavbarComponent {
   private store = inject(Store);
 
   activeSection$ = this.store.select(selectActiveSection);
-  menuOpen$      = this.store.select(selectMenuOpen);
-  scrolled       = false;
+  menuOpen$ = this.store.select(selectMenuOpen);
+  scrolled = false;
 
   links: { id: ActiveSection; label: string }[] = [
-    { id: 'our-story',   label: 'Our Story' },
-    { id: 'timeline',    label: 'Timeline' },
-    { id: 'gallery',     label: 'Gallery' },
+    { id: 'your-story', label: 'Your Story' },
+    { id: 'timeline', label: 'Timeline' },
+    { id: 'gallery', label: 'Gallery' },
     { id: 'love-letter', label: 'Letter' },
   ];
 
@@ -31,6 +31,7 @@ export class NavbarComponent {
 
   scrollTo(section: ActiveSection) {
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+
     this.store.dispatch(closeMenu());
   }
 

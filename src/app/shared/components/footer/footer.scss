@@ -6,6 +6,12 @@
   border-top: 1px solid rgba($rose-gold, 0.12);
   padding: 48px 0;
 
+  @media screen and (max-width: 768px) {
+    display: flex;
+    height: 222px;
+    padding-bottom: 134px;
+  }
+
   &__inner {
     @include flex-center;
     flex-direction: column;

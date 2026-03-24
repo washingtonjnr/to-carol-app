@@ -14,21 +14,32 @@ import { selectLightboxOpen, selectPhotos, selectPhotosError, selectPhotosLoadin
 export class GalleryComponent {
   private store = inject(Store);
 
-  photos$       = this.store.select(selectPhotos);
-  lightboxOpen$ = this.store.select(selectLightboxOpen);
-  selected$     = this.store.select(selectSelectedPhoto);
-  loading$      = this.store.select(selectPhotosLoading);
-  error$        = this.store.select(selectPhotosError);
+  photos$ = this.store.select(selectPhotos);
+  error$ = this.store.select(selectPhotosError);
+  loading$ = this.store.select(selectPhotosLoading);
+  selected$ = this.store.select(selectSelectedPhoto);
+  lightboxOpen = this.store.select(selectLightboxOpen);
 
-  open(id: number)  { this.store.dispatch(openLightbox({ photoId: id })); }
-  close()           { this.store.dispatch(closeLightbox()); }
-  next()            { this.store.dispatch(nextPhoto()); }
-  prev()            { this.store.dispatch(prevPhoto()); }
+  open(name: string) {
+    this.store.dispatch(openLightbox({ photoName: name }));
+  }
+  
+  close() { 
+    this.store.dispatch(closeLightbox()); 
+  }
+  
+  next() { 
+    this.store.dispatch(nextPhoto()); 
+  }
+  
+  prev() { 
+    this.store.dispatch(prevPhoto()); 
+  }
 
   @HostListener('document:keydown', ['$event'])
   onKey(e: KeyboardEvent) {
-    if (e.key === 'Escape')     this.close();
+    if (e.key === 'Escape') this.close();
     if (e.key === 'ArrowRight') this.next();
-    if (e.key === 'ArrowLeft')  this.prev();
+    if (e.key === 'ArrowLeft') this.prev();
   }
 }

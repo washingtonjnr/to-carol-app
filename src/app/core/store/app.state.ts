@@ -1,15 +1,13 @@
 export type ActiveSection =
   | 'hero'
-  | 'our-story'
+  | 'your-story'
   | 'timeline'
   | 'gallery'
   | 'love-letter';
 
 export interface GalleryPhoto {
-  id: number;
-  src: string;
-  alt: string;
-  caption: string;
+  name: string;
+  url: string;
 }
 
 export interface AppState {
@@ -24,7 +22,7 @@ export interface NavState {
 
 export interface GalleryState {
   photos: GalleryPhoto[];
-  selectedPhotoId: number | null;
+  selectedPhotoName: string | null;
   lightboxOpen: boolean;
   loading: boolean;
   error: string | null;

@@ -6,10 +6,11 @@ import { ActiveSection } from '@app/core/store/app.state';
 import { NavbarComponent } from '@app/shared/components/navbar/navbar';
 import { FooterComponent } from '@app/shared/components/footer/footer';
 import { HeroComponent } from '@app/modules/hero/hero';
-import { OurStoryComponent } from '@app/modules/our-story/our-story';
+import { YourStoryComponent } from '@src/app/modules/your-story/your-story';
 import { TimelineComponent } from '@app/modules/timeline/timeline';
 import { GalleryComponent } from '@app/modules/gallery/gallery';
 import { LoveLetterComponent } from '@app/modules/love-letter/love-letter';
+import { MusicPlayerComponent } from '@app/shared/components/music-player/music-player';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +20,11 @@ import { LoveLetterComponent } from '@app/modules/love-letter/love-letter';
     NavbarComponent,
     FooterComponent,
     HeroComponent,
-    OurStoryComponent,
+    YourStoryComponent,
     TimelineComponent,
     GalleryComponent,
     LoveLetterComponent,
+    MusicPlayerComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -32,7 +34,7 @@ export class App implements OnInit, OnDestroy {
   private observer!: IntersectionObserver;
 
   private sections: ActiveSection[] = [
-    'hero', 'our-story', 'timeline', 'gallery', 'love-letter',
+    'hero', 'your-story', 'timeline', 'gallery', 'love-letter',
   ];
 
   ngOnInit() {

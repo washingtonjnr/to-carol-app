@@ -1,9 +1,8 @@
 <section id="gallery" class="gallery">
   <div class="container">
-
     <div class="gallery__header">
       <span class="section-label">Memories</span>
-      <h2 class="gallery__title">Our Gallery</h2>
+      <h2 class="gallery__title">Gallery</h2>
       <div class="divider"></div>
     </div>
 
@@ -18,15 +17,13 @@
       </div>
     } @else {
       <div class="gallery__grid">
-        @for (photo of photos$ | async; track photo.id) {
-          <div class="gallery__item" role="button" tabindex="0"
-               (click)="open(photo.id)" (keyup.enter)="open(photo.id)">
-            <img [src]="photo.src" [alt]="photo.alt" loading="lazy" />
+        @for (photo of photos$ | async; track photo.name) {
+          <button class="gallery__item" tabindex="0" (click)="open(photo.name)" (keyup.enter)="open(photo.name)">
+            <img [src]="photo.url" [alt]="photo.name" loading="lazy" />
             <div class="gallery__caption">
-              <p>{{ photo.caption }}</p>
               <span class="caption-icon">⤢</span>
             </div>
-          </div>
+          </button>
         }
       </div>
     }
@@ -34,8 +31,7 @@
   </div>
 </section>
 
-<!-- Lightbox -->
-@if (lightboxOpen$ | async) {
+@if (lightboxOpen | async) {
   <div class="lightbox" role="button" tabindex="0"
        (click)="close()" (keyup.escape)="close()">
     <button class="lightbox__close" (click)="close()">✕</button>
@@ -45,8 +41,7 @@
     @if (selected$ | async; as photo) {
       <div class="lightbox__inner" role="button" tabindex="0"
            (click)="$event.stopPropagation()" (keyup.enter)="$event.stopPropagation()">
-        <img [src]="photo.src" [alt]="photo.alt" />
-        <p class="lightbox__caption">{{ photo.caption }}</p>
+        <img [src]="photo.url" [alt]="photo.name" />
       </div>
     }
   </div>

@@ -25,6 +25,7 @@
     "@ngrx/operators": "^21.0.1",
     "@ngrx/store": "^21.0.1",
     "@ngrx/store-devtools": "^21.0.1",
+    "howler": "^2.2.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -35,6 +36,7 @@
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "@eslint/js": "^10.0.1",
+    "@types/howler": "^2.2.12",
     "angular-eslint": "21.3.1",
     "eslint": "^10.0.3",
     "husky": "^9.1.7",
