@@ -81,7 +81,7 @@
     }
   }
 
-  &__cta {
+  &__see_more {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -95,7 +95,6 @@
     font-size: 0.9rem;
     font-weight: 500;
     letter-spacing: 0.1em;
-    text-transform: uppercase;
     cursor: pointer;
     transition: $transition-slow;
     @include fade-in-up(1s);
@@ -140,7 +139,6 @@
   }
 }
 
-// Floating particles
 .particle {
   position: absolute;
   width: 4px;
