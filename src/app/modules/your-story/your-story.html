@@ -1,0 +1,63 @@
+<section id="your-story" class="your-story">
+  <div class="container">
+
+    <div class="your-story__header">
+      <span class="section-label">M. CCarol</span>
+      <h2 class="your-story__title">Your Story</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="your-story__grid">
+
+      <div class="your-story__image-side">
+        <div class="image-frame">
+          <img [src]="(firstPhoto$ | async)?.url" [alt]="(firstPhoto$ | async)?.name" />
+          <div class="image-badge">
+            <span class="badge-script">Since day one</span>
+          </div>
+        </div>
+        <div class="image-frame image-frame--offset">
+          <img [src]="(secondPhoto$ | async)?.url" [alt]="(secondPhoto$ | async)?.name" />
+        </div>
+      </div>
+
+      <div class="your-story__text-side">
+        <p class="story-intro">
+          Some stories don’t need a big beginning, sometimes, all it takes is one person to make everything feel different.
+        </p>
+        <p>
+          Born out in the roça, where life is simples rs, 
+          but somehow you came out being anything but simple. 
+          Meu bem, you have this crazy mix, sweet, funny, chorona, 
+          pretty chaotic, and still one of the most amazing people I’ve ever met. 
+          It’s like they took extra time to shape you and got everything right.
+        </p>
+        <p>
+          You can be soft one minute and completely bafônica the next, 
+          laugh at the smallest things, and still turn heads without even trying.
+        </p>
+        <p>
+          Mas essa é a sua essência. Você torna tudo mais leve e mais pesado 
+          sem esforço (isso é doideira), se importa de um jeito raro e nem se dá 
+          conta de como é especial. Este site? Sou só eu tentando deixar registrado.
+        </p>
+
+        <div class="story-stats">
+          <div class="stat">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Memories made</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">1</span>
+            <span class="stat-label">Perfect person</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">♡</span>
+            <span class="stat-label">Always</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -5,7 +5,7 @@ import {
   nextPhoto, openLightbox, prevPhoto, setActiveSection, toggleMenu,
 } from '@app/core/store/app.actions';
 
-// ─── Nav ──────────────────────────────────────────────────────────────────────
+// Nav
 const navInitial: NavState = { activeSection: 'hero', menuOpen: false };
 
 export const navReducer = createReducer(
@@ -15,10 +15,10 @@ export const navReducer = createReducer(
   on(closeMenu,  state => ({ ...state, menuOpen: false }))
 );
 
-// ─── Gallery ──────────────────────────────────────────────────────────────────
+// Gallery
 const galleryInitial: GalleryState = {
   photos: [],
-  selectedPhotoId: null,
+  selectedPhotoName: null,
   lightboxOpen: false,
   loading: false,
   error: null,
@@ -33,16 +33,16 @@ export const galleryReducer = createReducer(
   on(loadPhotosFailure,
     (state, { error }) => ({ ...state, loading: false, error })),
 
-  on(openLightbox,  (state, { photoId }) => ({ ...state, lightboxOpen: true, selectedPhotoId: photoId })),
-  on(closeLightbox, state => ({ ...state, lightboxOpen: false, selectedPhotoId: null })),
+  on(openLightbox,  (state, { photoName }) => ({ ...state, lightboxOpen: true, selectedPhotoName: photoName })),
+  on(closeLightbox, state => ({ ...state, lightboxOpen: false, selectedPhotoName: null })),
   on(nextPhoto, state => {
-    const ids  = state.photos.map(p => p.id);
-    const next = ids[(ids.indexOf(state.selectedPhotoId!) + 1) % ids.length];
-    return { ...state, selectedPhotoId: next };
+    const names = state.photos.map(p => p.name);
+    const next  = names[(names.indexOf(state.selectedPhotoName!) + 1) % names.length];
+    return { ...state, selectedPhotoName: next };
   }),
   on(prevPhoto, state => {
-    const ids  = state.photos.map(p => p.id);
-    const prev = ids[(ids.indexOf(state.selectedPhotoId!) - 1 + ids.length) % ids.length];
-    return { ...state, selectedPhotoId: prev };
+    const names = state.photos.map(p => p.name);
+    const prev  = names[(names.indexOf(state.selectedPhotoName!) - 1 + names.length) % names.length];
+    return { ...state, selectedPhotoName: prev };
   })
 );

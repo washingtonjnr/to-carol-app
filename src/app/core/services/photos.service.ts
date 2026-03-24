@@ -8,6 +8,6 @@ export class PhotosService {
   private http = inject(HttpService);
 
   getPhotos(): Observable<GalleryPhoto[]> {
-    return this.http.get<GalleryPhoto[]>('/photos');
+    return this.http.get<GalleryPhoto[]>('/images');
   }
 }

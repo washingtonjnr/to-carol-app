@@ -21,7 +21,7 @@ npx ng generate component modules/my-component --standalone
 
 ### Frontend (Angular + NgRx)
 
-Single-page app — all sections on one scrolling page: **Hero → Our Story → Timeline → Gallery → Love Letter → Footer**.
+Single-page app — all sections on one scrolling page: **Hero → Your Story → Timeline → Gallery → Love Letter → Footer**.
 
 **Path aliases** (defined in `tsconfig.json`):
 - `@app/*` → `src/app/*`
@@ -54,6 +54,6 @@ Single-page app — all sections on one scrolling page: **Hero → Our Story →
 ## Photos
 
 - **Gallery photos** — drop files into `backend/photos/` (jpg/jpeg/png/webp/gif). The API auto-discovers them.
-- **Our Story images** — still served from `public/assets/photos/` (`story-main.jpg`, `story-second.jpg`)
+- **Your Story images** — still served from `public/assets/photos/` (`story-main.jpg`, `story-second.jpg`)
 - Timeline events → `src/app/modules/timeline/timeline.ts` (`events` array)
 - Letter text → `src/app/modules/love-letter/love-letter.html`
